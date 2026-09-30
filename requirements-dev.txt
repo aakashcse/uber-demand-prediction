@@ -1,0 +1,4 @@
+# Extra packages needed only to rebuild the data from the raw TLC files
+-r requirements.txt
+pyproj>=3.6      # converts zone boundaries to latitude/longitude
+pyshp>=2.3       # only if you use the older zipped shapefile
