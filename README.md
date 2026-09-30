@@ -2,6 +2,9 @@
 
 Forecasts **how many ride pickups will happen in each New York City taxi zone in the next 15 minutes**, using machine learning on **10.8 million real NYC trips** (May–July 2026). Includes an interactive Streamlit app with a demand dashboard, live predictions, a city-wide demand map and a model-insights page.
 
+**🔗 Live demo:** https://uber-demand-prediction-ym5r.onrender.com
+> Hosted on Render's free plan: if the app has been idle, the first load can take about a minute while it wakes up.
+
 > **Why it matters:** ride-hailing platforms use short-term demand forecasts to move drivers to where riders will be, which cuts waiting times and idle driving.
 
 ![Dashboard](assets/dashboard.png)
