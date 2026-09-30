@@ -1,0 +1,48 @@
+{
+  "chosen_model": "Gradient Boosting (HistGBR)",
+  "results": {
+    "Baseline: last 15 min": {
+      "MAE": 3.744,
+      "RMSE": 6.237,
+      "R2": 0.8887,
+      "WAPE": 0.2795
+    },
+    "Baseline: same time last week": {
+      "MAE": 4.722,
+      "RMSE": 8.631,
+      "R2": 0.7868,
+      "WAPE": 0.3525
+    },
+    "Linear Regression": {
+      "MAE": 3.226,
+      "RMSE": 5.364,
+      "R2": 0.9177,
+      "WAPE": 0.2408
+    },
+    "Gradient Boosting (HistGBR)": {
+      "MAE": 3.023,
+      "RMSE": 5.065,
+      "R2": 0.9266,
+      "WAPE": 0.2257
+    }
+  },
+  "train_period": [
+    "2026-05-08 00:00:00",
+    "2026-06-30 23:45:00"
+  ],
+  "test_period": [
+    "2026-07-01 00:00:00",
+    "2026-07-31 23:45:00"
+  ],
+  "train_rows": 419904,
+  "test_rows": 241056,
+  "n_iterations": 623,
+  "params": {
+    "l2_regularization": 1.0,
+    "learning_rate": 0.08,
+    "loss": "poisson",
+    "max_iter": 1000,
+    "max_leaf_nodes": 63,
+    "min_samples_leaf": 40
+  }
+}
