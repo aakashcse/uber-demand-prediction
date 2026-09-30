@@ -59,14 +59,14 @@ def train_gradient_boosting(train, zone_categories):
     model = HistGradientBoostingRegressor(
         loss="poisson",              # pickups are counts (>= 0), Poisson loss suits count data
         learning_rate=0.08,
-        max_iter=400,
+        max_iter=1000,               # upper limit - early stopping picks the actual number
         max_leaf_nodes=63,
         min_samples_leaf=40,
         l2_regularization=1.0,
         categorical_features="from_dtype",
         early_stopping=True,
         validation_fraction=0.1,
-        n_iter_no_change=20,
+        n_iter_no_change=30,
         random_state=config.RANDOM_STATE,
     )
     model.fit(prepare_X(train, zone_categories), train[TARGET])

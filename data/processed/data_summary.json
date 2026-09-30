@@ -1,0 +1,18 @@
+{
+  "raw_trips": 11458116,
+  "removed_unknown_zone": 19254,
+  "removed_distance": 456909,
+  "removed_fare": 41128,
+  "removed_duration": 152412,
+  "clean_trips": 10788413,
+  "months": [
+    "2026-05",
+    "2026-06",
+    "2026-07"
+  ],
+  "start": "2026-05-01 00:00:00",
+  "end": "2026-07-31 23:45:00",
+  "zones_total": 259,
+  "zones_modelled": 81,
+  "modelled_share": 0.9706
+}

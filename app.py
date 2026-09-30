@@ -83,8 +83,9 @@ test_end = pd.Timestamp(metrics["test_period"][1])
 
 # ------------------------------------------------------------------ helpers
 def kpi(col, label, value, sub=""):
+    size = ' style="font-size:1.15rem; white-space:normal; line-height:1.25; margin:6px 0 2px"' if len(str(value)) > 14 else ""
     col.markdown(f'<div class="kpi"><div class="label">{label}</div>'
-                 f'<div class="value" title="{value}">{value}</div><div class="sub">{sub}</div></div>',
+                 f'<div class="value"{size} title="{value}">{value}</div><div class="sub">{sub}</div></div>',
                  unsafe_allow_html=True)
 
 
@@ -220,6 +221,7 @@ if page == "📊 Dashboard":
                                           tickfont=dict(color=charts.MUTED), thickness=10),
             hovertemplate="%{y} %{x}: %{z:,.0f} pickups / 15 min<extra></extra>"))
         fig.update_yaxes(autorange="reversed", showgrid=False)
+        fig.update_xaxes(tickvals=[fmt_hour(h) for h in range(0, 24, 3)], tickangle=0)
         st.plotly_chart(charts.style(fig, legend=False), width="stretch")
     with c2:
         st.markdown("#### Top 10 pickup zones")
@@ -477,11 +479,12 @@ elif page == "🧠 Model Insights":
 
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown("#### Where is the model least accurate? (MAE by hour)")
+        st.markdown("#### Error by hour of day (MAE)")
         err = test_pred.assign(abs_err=(test_pred["pickups"] - test_pred["predicted"]).abs(),
                                hour=test_pred["timestamp"].dt.hour).groupby("hour")["abs_err"].mean()
         fig = charts.bar([fmt_hour(h) for h in err.index], err.values, height=300,
                          hover="%{x}: MAE %{y:.2f}", y_title="MAE (pickups / 15 min)")
+        fig.update_xaxes(tickvals=[fmt_hour(h) for h in range(0, 24, 3)], tickangle=0)
         st.plotly_chart(fig, width="stretch")
         st.caption("Errors are larger in busy hours simply because there are more pickups to predict.")
     with c2:
